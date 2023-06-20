@@ -148,4 +148,12 @@ const searchFor = () => {
 /* I need to add a div somewhere with all the informations about the dishes added to the cart, give the opportunity to modify it with two buttons.
 And do the checkout */
 /* For this I need an addEventListener, that listen the shopping cart of each card, when we click on it, it must check how much is in the div associated, if it existe in the tab and them, if not create them */
-
+document.getElementById("shopAddition").style.visibility = "hidden"
+document.getElementById("open-cart").addEventListener("click",(e)=> {
+    if (document.getElementById("shopAddition").style.visibility == "hidden"){
+        document.getElementById("shopAddition").style.visibility = "visible"
+    }else{
+        document.getElementById("shopAddition").style.visibility = "hidden"
+    }
+})
+   
