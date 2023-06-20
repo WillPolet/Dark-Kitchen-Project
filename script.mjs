@@ -1,4 +1,4 @@
-import dishes from "./dishes.json" assert {type: "json"}
+import dishes from "./dishes3.json" assert {type: "json"}
 import {stringify} from "./stringify.js"
 
 
@@ -58,10 +58,11 @@ for (let i = 0 ; i < dishes.length ; i++){
     `
     document.getElementById("card-container").insertAdjacentHTML("beforeend", elementCard)
     document.getElementById("img"+stringify(dishes[i].name)).style.width = "50%"
-    document.getElementById("img"+stringify(dishes[i].name)).style.height = "120px"
+    document.getElementById("img"+stringify(dishes[i].name)).style.height = "140px"
     document.getElementById("img"+stringify(dishes[i].name)).style.backgroundSize = "cover"
     document.getElementById("img"+stringify(dishes[i].name)).style.backgroundPosition = "center"
     document.getElementById("img"+stringify(dishes[i].name)).style.backgroundImage = `url("${dishes[i].img}")`
+    document.getElementById("img"+stringify(dishes[i].name)).style.borderRadius = "14px 0px 0px 0px"
 
     document.getElementById(`minus${stringify(dishes[i].name)}`).addEventListener("click", () => {
             if (document.getElementById(`number${stringify(dishes[i].name)}`).value > 0){
