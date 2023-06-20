@@ -1,0 +1,32 @@
+.fond {
+	height:100vh;
+    background-image: url("img/backgroundindex.png");
+	background-repeat:no-repeat;
+	background-position:bottom;
+    background-size: coverh ;
+    max-width:100vw;
+    overflow-x:hidden;
+}
+.jumbotron {
+	background:transparent;
+	color:white;
+}
+h1 {
+	font-family: 'Pacifico', cursive;
+	padding-bottom: 25px;
+	text-shadow: 2px 2px 2px black;
+}
+p {
+   text-shadow: 2px 2px 2px black;	
+}
+.barnav {
+	margin: 0;
+	padding:0;
+	background:transparent;
+}
+.navbar  {
+	background-color: rgba(0,0,0,.6);
+}
+.navbar-nav>a {
+	color:white;
+}
