@@ -1,7 +1,7 @@
 [
     {
         "name" : "Fried Potatos",
-        "price" : "$ 10",
+        "price" : "10",
         "img" : "https://www.woopets.fr/assets/races/000/276/small_portrait/samoyede.jpg",
         "longDesc" : "",
         "shortDesc" : "",
@@ -10,7 +10,7 @@
     },
     {
         "name": "Arugula Salad with Stone Fruit",
-        "price": "$ 14.95",
+        "price": "14.95",
         "img": "https://www.allrecipes.com/thmb/EC7FTg4V4z3ijZyHMVmdXTlkFaQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/7506181-arugula-salad-with-stone-fruit-GOLDMAN-4x3-5066-df2290fa4eaf49689258d9100e1170f4.jpg",
         "longDesc": "This juicy, vibrant arugula salad features fresh cherries, peaches, and nectarines for a summery flavor. For an extra touch of sweetness, opt for rosé vinegar, a rosé wine-based vinegar with a bright, fruity flavor.",
         "shortDesc": "This juicy, vibrant arugula salad features fresh cherries, peaches, and nectarines.",
@@ -19,7 +19,7 @@
       },
       {
         "name": "Coronation Chicken",
-        "price": "$ 12.95",
+        "price": "12.95",
         "img": "https://www.allrecipes.com/thmb/-Zb9K3uggG3LnjhSUGjYp2Vg9cA=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/1644528661coronation-chicken-square-d81fa2fc43fd4056b62b5b23e28710bf.jpg",
         "longDesc":
           "Coronation chicken is a creamy chicken and mango salad with a spicy curried mayonnaise dressing. It is something fresh and different that always brings interest and recipe requests. Serve cold with a crisp garden or rice salad. This also makes a wonderful sandwich filling.",
