@@ -314,6 +314,41 @@ footer p {
   margin-left: 50px;
 }
 
+#shopAddition{
+    position: fixed;
+    top: 110px;
+    background-color: #031d44;
+    padding: 20px;
+    color:white;
+    min-width: 40vw;
+    display: flex;
+    /* margin: 0px 10vw 0px 10vw; */
+    min-height: 30vh;
+    flex-direction: column;
+    align-items: center;
+    right: 40px;
+    z-index: 1;
+}
+#shopAddition h2{
+    margin-bottom: 20px;
+    font-family: "Karla", sans-serif;
+    color: #f7ce68;
+}
+#shopAddition table{
+    border-spacing: 20px;
+}
+#shopAddition input{
+    width:50px;
+    text-align: center;
+    font-family: "Karla", sans-serif;
+    border: none;
+}
+#shopAddition td{
+    font-family: "Karla", sans-serif;
+    /* display: flex; */
+    /* justify-content: center; */
+}
+
 @media screen and (max-width: 450px) {
   .Main-Content {
     display: flex;
