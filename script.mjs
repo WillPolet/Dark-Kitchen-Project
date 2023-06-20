@@ -80,7 +80,7 @@ const searchFor = () => {
       const element = document.getElementById(stringify(dishes[l].name));
   
       if (searchValue === "" || dishes[l].name.toLowerCase().includes(searchValue)) {
-        element.style.display = "block";
+        element.style.display = "flex";
       } else {
         element.style.display = "none";
       }
