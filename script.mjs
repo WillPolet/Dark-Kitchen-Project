@@ -1,4 +1,4 @@
-import dishes from "./dishes3.json" assert {type: "json"}
+import dishes from "./dishes.json" assert {type: "json"}
 import {stringify} from "./stringify.js"
 
 
@@ -46,13 +46,13 @@ for (let i = 0 ; i < dishes.length ; i++){
             </div>
         </div>
         <div class = "shop">
-            <h3>${dishes[i].price}</h3>
+            <h3>$ ${dishes[i].price}</h3>
             <div class = "quantity">
                 <button id = "minus${stringify(dishes[i].name)}" class = "minus">-</button>
                 <input type = "number" value = "0" min="0" id = "number${stringify(dishes[i].name)}"></input>
                 <button id = "add${stringify(dishes[i].name)}" class = "plus">+</button>
             </div>
-            <button class="cart-button"><i class="fa-solid fa-cart-shopping"></i></button>
+            <button id = "cart${stringify(dishes[i].name)}" class="cart-button"><i class="fa-solid fa-cart-shopping"></i></button>
         </div>
     </div>
     `
@@ -73,6 +73,44 @@ for (let i = 0 ; i < dishes.length ; i++){
                     document.getElementById(`number${stringify(dishes[i].name)}`).value = parseInt(document.getElementById(`number${stringify(dishes[i].name)}`).value) + 1
 
     })
+    document.getElementById(`cart${stringify(dishes[i].name)}`).addEventListener("click", () => {
+        let numberOf = parseInt(document.getElementById(`number${stringify(dishes[i].name)}`).value)
+        console.log(stringify(dishes[i].name))
+        let selector = document.getElementById("tbody").querySelector(`#shop${stringify(dishes[i].name)}`)
+        if (numberOf > 0){
+            if (selector == null){ // It's works, when there's no children 
+                let newTr = document.createElement("tr")
+                let tdName = document.createElement("td")
+                let tdButton = document.createElement("td")
+                let tdPrice = document.createElement("td")
+                let buttonOne = document.createElement("button")
+                let buttonTwo = document.createElement("button")
+                buttonOne.textContent = "-"
+                buttonOne.className = "minus"
+                buttonTwo.textContent = "+"
+                buttonTwo.className = "plus"
+                let input = document.createElement("input")
+                input.type = "number"
+                input.min = "0"
+                input.id = `shopInput${stringify(dishes[i].name)}`
+                input.value = numberOf
+                input.readOnly = true
+                tdName.textContent = dishes[i].name
+                tdButton.appendChild(buttonOne)
+                tdButton.appendChild(input)
+                tdButton.appendChild(buttonTwo)
+                tdPrice.textContent = "$ " + numberOf * dishes[i].price
+                newTr.appendChild(tdName)
+                newTr.appendChild(tdButton)
+                newTr.appendChild(tdPrice)
+                newTr.id = `shop${stringify(dishes[i].name)}`
+                document.getElementById("tbody").appendChild(newTr)
+            }
+            else {
+                document.getElementById(`shopInput${stringify(dishes[i].name)}`).value = parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) + numberOf
+            }
+        }
+    })
 }
 const searchFor = () => {
     const searchValue = document.getElementById("search").value.toLowerCase();
@@ -92,3 +130,5 @@ const searchFor = () => {
 
 /* I need to add a div somewhere with all the informations about the dishes added to the cart, give the opportunity to modify it with two buttons.
 And do the checkout */
+/* For this I need an addEventListener, that listen the shopping cart of each card, when we click on it, it must check how much is in the div associated, if it existe in the tab and them, if not create them */
+
