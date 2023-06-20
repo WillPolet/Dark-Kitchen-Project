@@ -11,6 +11,14 @@ export const stringify = (a) => {
     }
     var tab = strArray.filter(elm => elm)
     var sentence = tab.join("")
+    var strArray2 = sentence.split("")
+    for (let j = 0 ; j < strArray2.length ; j++){
+        if (strArray2[j] === "'"){
+            delete strArray2[j]
+        }
+    }
+    var tab2 = strArray2.filter(elm => elm)
+    var sentence = tab2.join("")
     return sentence
 }
 

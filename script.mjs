@@ -83,12 +83,26 @@ for (let i = 0 ; i < dishes.length ; i++){
                 let tdName = document.createElement("td")
                 let tdButton = document.createElement("td")
                 let tdPrice = document.createElement("td")
+                tdPrice.id = `price${stringify(dishes[i].name)}` 
                 let buttonOne = document.createElement("button")
                 let buttonTwo = document.createElement("button")
                 buttonOne.textContent = "-"
                 buttonOne.className = "minus"
                 buttonTwo.textContent = "+"
                 buttonTwo.className = "plus"
+                buttonOne.addEventListener("click", () => {
+                    if (document.getElementById(`shopInput${stringify(dishes[i].name)}`).value > 1){
+                        document.getElementById(`shopInput${stringify(dishes[i].name)}`).value -= 1
+                        document.getElementById(`price${stringify(dishes[i].name)}`).textContent = "$ " + parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) * dishes[i].price
+                    }
+                    else{
+                        document.getElementById(`shop${stringify(dishes[i].name)}`).remove()
+                    }
+                })
+                buttonTwo.addEventListener("click", () => {
+                    document.getElementById(`shopInput${stringify(dishes[i].name)}`).value = parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) + 1
+                    document.getElementById(`price${stringify(dishes[i].name)}`).textContent = "$ " + parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) * dishes[i].price
+                })
                 let input = document.createElement("input")
                 input.type = "number"
                 input.min = "0"
@@ -105,9 +119,12 @@ for (let i = 0 ; i < dishes.length ; i++){
                 newTr.appendChild(tdPrice)
                 newTr.id = `shop${stringify(dishes[i].name)}`
                 document.getElementById("tbody").appendChild(newTr)
+                document.getElementById(`number${stringify(dishes[i].name)}`).value = 0
             }
             else {
                 document.getElementById(`shopInput${stringify(dishes[i].name)}`).value = parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) + numberOf
+                document.getElementById(`price${stringify(dishes[i].name)}`).textContent = "$ " + parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) * dishes[i].price
+                document.getElementById(`number${stringify(dishes[i].name)}`).value = 0
             }
         }
     })
