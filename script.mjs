@@ -88,3 +88,6 @@ const searchFor = () => {
   };
   
   document.getElementById("search").addEventListener("input", searchFor);
+
+/* I need to add a div somewhere with all the informations about the dishes added to the cart, give the opportunity to modify it with two buttons.
+And do the checkout */
