@@ -27,9 +27,27 @@
         <div class="buttons">
           <input id="search" type="search" placeholder="" />
           <i class="fa-solid fa-magnifying-glass fa-2x"></i>
-          <i class="fa-solid fa-toggle-off fa-2x"></i>
+          <p id="dark-mode-toggle"><i id="toggle-icon" onclick="toggleIcon()" class="fa-solid fa-toggle-off fa-2x"></i></p>
+
+
           <i class="fa-solid fa-cart-shopping fa-2x"></i>
+
+
         </div>
+        <script>
+            function toggleIcon() {
+                var icon = document.getElementById("toggle-icon");
+            
+                if (icon.classList.contains("fa-toggle-off")) {
+                icon.classList.remove("fa-toggle-off");
+                icon.classList.add("fa-toggle-on");
+                } else {
+                icon.classList.remove("fa-toggle-on");
+                icon.classList.add("fa-toggle-off");
+                }
+            }
+            
+          </script>
       </div>
       <!-- <div class="Top-List">
             <ul>
@@ -110,6 +128,6 @@
       </div>
     </footer>
 
-    <script src="script.mjs" type="module"></script>
+    <script src="script.js" type="module"></script>
   </body>
 </html>
