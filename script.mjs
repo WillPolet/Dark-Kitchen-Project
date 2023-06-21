@@ -148,7 +148,10 @@ for (let i = 0 ; i < dishes.length ; i++){
 }
 const searchFor = () => {
     const searchValue = document.getElementById("search").value.toLowerCase();
-  
+    document.getElementById("checkFish").checked = false
+    document.getElementById("checkMeat").checked = false
+    document.getElementById("checkVege").checked = false
+    document.getElementById("checkVegan").checked = false
     for (let l = 0; l < dishes.length; l++) {
       const element = document.getElementById(stringify(dishes[l].name));
   
@@ -162,9 +165,7 @@ const searchFor = () => {
   
 document.getElementById("search").addEventListener("input", searchFor);
 
-/* I need to add a div somewhere with all the informations about the dishes added to the cart, give the opportunity to modify it with two buttons.
-And do the checkout */
-/* For this I need an addEventListener, that listen the shopping cart of each card, when we click on it, it must check how much is in the div associated, if it existe in the tab and them, if not create them */
+/* -------------------------------------------------------------- */
 document.getElementById("shopAddition").style.visibility = "hidden";
 document.getElementById("open-cart").addEventListener("click", (e) => {
   if (document.getElementById("shopAddition").style.visibility == "hidden") {
@@ -182,3 +183,49 @@ var body = document.body;
 darkModeToggle.addEventListener("click", function () {
   body.classList.toggle("dark-mode");
 });
+
+/*--------------------Part on tags------------------------- */
+/* Need to display only the checked tags, so need to know what tag is checked first */
+let checkFish = document.getElementById("checkFish")
+let checkMeat = document.getElementById("checkMeat")
+let checkVege = document.getElementById("checkVege")
+let checkVegan = document.getElementById("checkVegan")
+
+const tagTri = () =>{
+    let fish = checkFish.checked
+    let meat = checkMeat.checked
+    let vege = checkVege.checked
+    let vegan = checkVegan.checked
+    document.getElementById("search").value = ""
+    for (let t = 0 ; t < dishes.length ; t++){
+        document.getElementById(`${stringify(dishes[t].name)}`).style.display = "none"
+        if (fish){
+            if (dishes[t].tagName.includes("fish")){
+                document.getElementById(`${stringify(dishes[t].name)}`).style.display = "flex"
+            }
+        }
+        if (meat){
+            if (dishes[t].tagName.includes("meat")){
+                document.getElementById(`${stringify(dishes[t].name)}`).style.display = "flex"
+            }
+        }
+        if (vege){
+            if (dishes[t].tagName.includes("vege")){
+                document.getElementById(`${stringify(dishes[t].name)}`).style.display = "flex"
+            }
+        }
+        if (vegan){
+            if (dishes[t].tagName.includes("vegan")){
+                document.getElementById(`${stringify(dishes[t].name)}`).style.display = "flex"
+            }
+        }
+        if (!fish && !meat && !vege && !vegan){
+            document.getElementById(`${stringify(dishes[t].name)}`).style.display = "flex"
+        }
+    }
+}
+
+checkFish.addEventListener("change",tagTri)
+checkMeat.addEventListener("change",tagTri)
+checkVegan.addEventListener("change",tagTri)
+checkVege.addEventListener("change",tagTri)

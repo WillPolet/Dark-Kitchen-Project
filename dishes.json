@@ -5,8 +5,8 @@
       "img": "https://www.allrecipes.com/thmb/EC7FTg4V4z3ijZyHMVmdXTlkFaQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/7506181-arugula-salad-with-stone-fruit-GOLDMAN-4x3-5066-df2290fa4eaf49689258d9100e1170f4.jpg",
       "longDesc": "This juicy, vibrant arugula salad features fresh cherries, peaches, and nectarines for a summery flavor. For an extra touch of sweetness, opt for rosé vinegar, a rosé wine-based vinegar with a bright, fruity flavor.",
       "shortDesc": "This juicy, vibrant arugula salad features fresh cherries, peaches, and nectarines.",
-      "diet": ["fa-solid fa-leaf"],
-      "tagName" : ""
+      "diet": ["fa-solid fa-leaf", "fa-solid fa-egg"],
+      "tagName" : ["vegan", "vege"]
     },
     {
       "name": "Coronation Chicken",
@@ -17,7 +17,7 @@
       "shortDesc":
         "Creamy chicken and mango salad with a spicy curried mayonnaise dressing.",
       "diet": ["fa-solid fa-drumstick-bite"],
-      "tagName" : ""
+      "tagName" : ["meat"]
     },    {
       "name" : "The Denver Omelet",
       "price" : "10",
@@ -25,7 +25,7 @@
       "longDesc" : "Discover the delightful twist of a Denver omelet, known for its caramelized flavor and firmer texture, a dish I proudly mastered during my high school line cook days. Complete your meal with a refreshing arugula salad and a side of toasted bread for a satisfying lunch or dinner.",
       "shortDesc" : "Caramelized flavor, firmer texture — perfect with arugula salad and toasted bread.",
       "diet" : ["fa-solid fa-egg"],
-      "tagName" : ["vege", "vegan", "meat", "fish"]
+      "tagName" : ["vege", "vegan"]
     },    {
       "name" : "Homemade Corn Dogs",
       "price" : "10",
