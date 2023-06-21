@@ -1,6 +1,8 @@
 import dishes from "./dishes.json" assert {type: "json"}
 import {stringify} from "./stringify.js"
 
+let totalPrice = 0
+document.getElementById("totalPrice").textContent = "$ " + totalPrice
 
 /* Creating cards : */
 
@@ -78,7 +80,7 @@ for (let i = 0 ; i < dishes.length ; i++){
         console.log(stringify(dishes[i].name))
         let selector = document.getElementById("tbody").querySelector(`#shop${stringify(dishes[i].name)}`)
         if (numberOf > 0){
-            if (selector == null){ // It's works, when there's no children 
+            if (selector == null){
                 let newTr = document.createElement("tr")
                 let tdName = document.createElement("td")
                 let tdButton = document.createElement("td")
@@ -95,9 +97,13 @@ for (let i = 0 ; i < dishes.length ; i++){
                         document.getElementById(`shopInput${stringify(dishes[i].name)}`).value -= 1
                         document.getElementById(`price${stringify(dishes[i].name)}`).textContent = "$ " + parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) * dishes[i].price
                         // Set price there
+                        totalPrice -= dishes[i].price
+                        document.getElementById("totalPrice").textContent = "$ " + totalPrice
                     }
                     else{
                         //Set price there
+                        totalPrice -= dishes[i].price
+                        document.getElementById("totalPrice").textContent = "$ " + totalPrice
                         document.getElementById(`shop${stringify(dishes[i].name)}`).remove()
                     }
                 })
@@ -105,6 +111,8 @@ for (let i = 0 ; i < dishes.length ; i++){
                     document.getElementById(`shopInput${stringify(dishes[i].name)}`).value = parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) + 1
                     document.getElementById(`price${stringify(dishes[i].name)}`).textContent = "$ " + parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) * dishes[i].price
                     // Set price there
+                    totalPrice += parseFloat(dishes[i].price)
+                    document.getElementById("totalPrice").textContent = "$ " + totalPrice
                 })
                 let input = document.createElement("input")
                 input.type = "number"
@@ -117,7 +125,9 @@ for (let i = 0 ; i < dishes.length ; i++){
                 tdButton.appendChild(input)
                 tdButton.appendChild(buttonTwo)
                 tdPrice.textContent = "$ " + numberOf * dishes[i].price
-                // Set total Price there
+                // Set total Price there OK
+                totalPrice += parseFloat(numberOf * dishes[i].price)
+                document.getElementById("totalPrice").textContent = "$ " + totalPrice
                 newTr.appendChild(tdName)
                 newTr.appendChild(tdButton)
                 newTr.appendChild(tdPrice)
@@ -128,7 +138,9 @@ for (let i = 0 ; i < dishes.length ; i++){
             else {
                 document.getElementById(`shopInput${stringify(dishes[i].name)}`).value = parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) + numberOf
                 document.getElementById(`price${stringify(dishes[i].name)}`).textContent = "$ " + parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) * dishes[i].price
-                // Set TotalPrice there
+                // Set TotalPrice there OK
+                totalPrice += parseFloat(numberOf * dishes[i].price)
+                document.getElementById("totalPrice").textContent = "$ " + totalPrice
                 document.getElementById(`number${stringify(dishes[i].name)}`).value = 0
             }
         }
