@@ -284,6 +284,9 @@ document.querySelectorAll(".shortDesc").forEach((elem) => {
     elem.classList.remove("div-visible");
     elem.nextElementSibling.classList.remove("div-hidden");
     elem.nextElementSibling.classList.add("div-visible");
+    elem.parentElement.parentElement.style.transform = "rotateX(360deg)"
+    elem.parentElement.parentElement.style.transition = "transform 0.3s"
+    elem.parentElement.parentElement.style.transformStyle = "preserve-3d"
   });
 });
 
@@ -293,5 +296,7 @@ document.querySelectorAll(".longDesc").forEach((elem) => {
     elem.classList.remove("div-visible");
     elem.previousElementSibling.classList.remove("div-hidden");
     elem.previousElementSibling.classList.add("div-visible");
+    elem.parentElement.parentElement.style.transform = "none"
   });
 });
+
