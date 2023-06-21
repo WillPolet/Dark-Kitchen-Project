@@ -298,6 +298,17 @@ document.querySelectorAll(".longDesc").forEach((elem) => {
     elem.parentElement.parentElement.style.transform = "none"
   });
 });
+document.querySelector("#open-cart").addEventListener("click",(e)=>{
+  if(!document.querySelector("#card-container").classList.contains("blur")){
+  document.querySelector("#card-container").classList.add("blur")
+  document.querySelector("#card-container").style.filter = "blur(10px)";
+  document.querySelector("aside").style.filter = "blur(10px)";
+  }else{
+    document.querySelector("#card-container").classList.remove("blur")
+    document.querySelector("#card-container").style.filter = "none";
+    document.querySelector("aside").style.filter = "none";
+  }
+})
 
 /*--------------------Part on tags------------------------- */
 /* Need to display only the checked tags, so need to know what tag is checked first */

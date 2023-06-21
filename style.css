@@ -13,6 +13,7 @@
   --Footer-color: #031d44;
   --Card-color: #031d44;
   --TopTop-color: white;
+  --ShopAddition-color: #031d44
 }
 
 body {
@@ -30,6 +31,7 @@ body {
   --Footer-color: #5a5a5a;
   --Card-color: #5a5a5a;
   --TopTop-color: #b8b8b8;
+  --ShopAddition-color: #5a5a5a;
 }
 
 /* body {
@@ -355,7 +357,7 @@ footer p {
 #shopAddition {
   position: fixed;
   top: 110px;
-  background-color: #031d44;
+  background-color:var(--ShopAddition-color);
   padding: 20px;
   color: white;
   min-width: 40vw;
@@ -365,6 +367,7 @@ footer p {
   flex-direction: column;
   align-items: center;
   right: 40px;
+  border-radius: 15px;
   /* z-index: 1; */
 }
 #shopAddition h2 {
@@ -380,20 +383,27 @@ footer p {
   text-align: center;
   font-family: "Karla", sans-serif;
   border: none;
+  font-size: 14px;
 }
 #shopAddition td {
   font-family: "Karla", sans-serif;
+  text-align: right;
   /* display: flex; */
   /* justify-content: center; */
 }
-#shopAddition tfoot tr:nth-child(1) {
-    font-size: 24px;
+#shopAddition thead tr td:nth-child(1) {
     text-align: center;
+}
+#shopAddition tfoot tr:nth-child(1) {
+    font-size: 34px;
+    color: #f7ce68;
+    font-weight: bold;
   }
   #shopAddition thead tr:nth-child(1) {
+    margin-top:20px;
     font-size: 20px;
     font-weight: bold;
-    text-align: center;
+    color: #f7ce68;
   }
 /*Class that hides/shows divs when callend via js*/
 .div-hidden{
@@ -464,7 +474,24 @@ footer p {
     display: flex;
     justify-content: center;
     margin: 25px 0px 80px 0px;
-    
+  }
+  #shopAddition tfoot tr:nth-child(1) {
+    font-size: 14px;
+    text-align: center;
+  }
+  #shopAddition thead tr:nth-child(1) {
+    font-size: 20px;
+    text-align: center;
+}
+  #shopAddition {
+    margin-left: 3vw;
+    margin-right: 3vw;
+  }
+  #shopAddition input{
+    font-size: 14px;
+  }
+  #shopAddition tbody tr td {
+    font-size: 12px;
   }
 }
 
