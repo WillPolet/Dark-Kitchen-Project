@@ -1,5 +1,8 @@
-import dishes from "./dishes.json" assert { type: "json" };
-import { stringify } from "./stringify.js";
+import dishes from "./dishes.js"
+import {stringify} from "./stringify.js";
+
+let totalPrice = 0;
+document.getElementById("totalPrice").textContent = "$ " + totalPrice;
 
 /* Creating cards : */
 
@@ -114,7 +117,6 @@ for (let i = 0; i < dishes.length; i++) {
         .querySelector(`#shop${stringify(dishes[i].name)}`);
       if (numberOf > 0) {
         if (selector == null) {
-          // It's works, when there's no children
           let newTr = document.createElement("tr");
           let tdName = document.createElement("td");
           let tdButton = document.createElement("td");
@@ -138,13 +140,22 @@ for (let i = 0; i < dishes.length; i++) {
                 `price${stringify(dishes[i].name)}`
               ).textContent =
                 "$ " +
-                parseInt(
-                  document.getElementById(
-                    `shopInput${stringify(dishes[i].name)}`
-                  ).value
-                ) *
-                  dishes[i].price;
+                (
+                  parseInt(
+                    document.getElementById(
+                      `shopInput${stringify(dishes[i].name)}`
+                    ).value
+                  ) * dishes[i].price
+                ).toFixed(2);
+              // Set price there
+              totalPrice -= dishes[i].price;
+              document.getElementById("totalPrice").textContent =
+                "$ " + totalPrice.toFixed(2);
             } else {
+              //Set price there
+              totalPrice -= dishes[i].price;
+              document.getElementById("totalPrice").textContent =
+                "$ " + totalPrice.toFixed(2);
               document
                 .getElementById(`shop${stringify(dishes[i].name)}`)
                 .remove();
@@ -162,11 +173,17 @@ for (let i = 0; i < dishes.length; i++) {
               `price${stringify(dishes[i].name)}`
             ).textContent =
               "$ " +
-              parseInt(
-                document.getElementById(`shopInput${stringify(dishes[i].name)}`)
-                  .value
-              ) *
-                dishes[i].price;
+              (
+                parseInt(
+                  document.getElementById(
+                    `shopInput${stringify(dishes[i].name)}`
+                  ).value
+                ) * dishes[i].price
+              ).toFixed(2);
+            // Set price there
+            totalPrice += parseFloat(dishes[i].price);
+            document.getElementById("totalPrice").textContent =
+              "$ " + totalPrice.toFixed(2);
           });
           let input = document.createElement("input");
           input.type = "number";
@@ -178,7 +195,11 @@ for (let i = 0; i < dishes.length; i++) {
           tdButton.appendChild(buttonOne);
           tdButton.appendChild(input);
           tdButton.appendChild(buttonTwo);
-          tdPrice.textContent = "$ " + numberOf * dishes[i].price;
+          tdPrice.textContent = "$ " + (numberOf * dishes[i].price).toFixed(2);
+          // Set total Price there OK
+          totalPrice += parseFloat(numberOf * dishes[i].price);
+          document.getElementById("totalPrice").textContent =
+            "$ " + totalPrice.toFixed(2);
           newTr.appendChild(tdName);
           newTr.appendChild(tdButton);
           newTr.appendChild(tdPrice);
@@ -199,11 +220,16 @@ for (let i = 0; i < dishes.length; i++) {
             `price${stringify(dishes[i].name)}`
           ).textContent =
             "$ " +
-            parseInt(
-              document.getElementById(`shopInput${stringify(dishes[i].name)}`)
-                .value
-            ) *
-              dishes[i].price;
+            (
+              parseInt(
+                document.getElementById(`shopInput${stringify(dishes[i].name)}`)
+                  .value
+              ) * dishes[i].price
+            ).toFixed(2);
+          // Set TotalPrice there OK
+          totalPrice += parseFloat(numberOf * dishes[i].price);
+          document.getElementById("totalPrice").textContent =
+            "$ " + totalPrice.toFixed(2);
           document.getElementById(
             `number${stringify(dishes[i].name)}`
           ).value = 0;
@@ -212,27 +238,26 @@ for (let i = 0; i < dishes.length; i++) {
     });
 }
 const searchFor = () => {
-  const searchValue = document.getElementById("search").value.toLowerCase();
-
-  for (let l = 0; l < dishes.length; l++) {
-    const element = document.getElementById(stringify(dishes[l].name));
-
-    if (
-      searchValue === "" ||
-      dishes[l].name.toLowerCase().includes(searchValue)
-    ) {
-      element.style.display = "flex";
-    } else {
-      element.style.display = "none";
+    const searchValue = document.getElementById("search").value.toLowerCase();
+    document.getElementById("checkFish").checked = false
+    document.getElementById("checkMeat").checked = false
+    document.getElementById("checkVege").checked = false
+    document.getElementById("checkVegan").checked = false
+    for (let l = 0; l < dishes.length; l++) {
+      const element = document.getElementById(stringify(dishes[l].name));
+  
+      if (searchValue === "" || dishes[l].name.toLowerCase().includes(searchValue)) {
+        element.style.display = "flex";
+      } else {
+        element.style.display = "none";
+      }
     }
   }
-};
+
 
 document.getElementById("search").addEventListener("input", searchFor);
 
-/* I need to add a div somewhere with all the informations about the dishes added to the cart, give the opportunity to modify it with two buttons.
-And do the checkout */
-/* For this I need an addEventListener, that listen the shopping cart of each card, when we click on it, it must check how much is in the div associated, if it existe in the tab and them, if not create them */
+/* -------------------------------------------------------------- */
 document.getElementById("shopAddition").style.visibility = "hidden";
 document.getElementById("open-cart").addEventListener("click", (e) => {
   if (document.getElementById("shopAddition").style.visibility == "hidden") {
@@ -250,3 +275,72 @@ var body = document.body;
 darkModeToggle.addEventListener("click", function () {
   body.classList.toggle("dark-mode");
 });
+
+//Expands to long desc when card is clicked
+document.querySelectorAll(".shortDesc").forEach((elem) => {
+  elem.addEventListener("click", (e) => {
+    elem.classList.add("div-hidden");
+    elem.classList.remove("div-visible");
+    elem.nextElementSibling.classList.remove("div-hidden");
+    elem.nextElementSibling.classList.add("div-visible");
+    elem.parentElement.parentElement.style.transform = "rotateX(360deg)"
+    elem.parentElement.parentElement.style.transition = "transform 0.3s"
+    elem.parentElement.parentElement.style.transformStyle = "preserve-3d"
+  });
+});
+
+document.querySelectorAll(".longDesc").forEach((elem) => {
+  elem.addEventListener("click", (e) => {
+    elem.classList.add("div-hidden");
+    elem.classList.remove("div-visible");
+    elem.previousElementSibling.classList.remove("div-hidden");
+    elem.previousElementSibling.classList.add("div-visible");
+    elem.parentElement.parentElement.style.transform = "none"
+  });
+});
+
+/*--------------------Part on tags------------------------- */
+/* Need to display only the checked tags, so need to know what tag is checked first */
+let checkFish = document.getElementById("checkFish")
+let checkMeat = document.getElementById("checkMeat")
+let checkVege = document.getElementById("checkVege")
+let checkVegan = document.getElementById("checkVegan")
+
+const tagTri = () =>{
+    let fish = checkFish.checked
+    let meat = checkMeat.checked
+    let vege = checkVege.checked
+    let vegan = checkVegan.checked
+    document.getElementById("search").value = ""
+    for (let t = 0 ; t < dishes.length ; t++){
+        document.getElementById(`${stringify(dishes[t].name)}`).style.display = "none"
+        if (fish){
+            if (dishes[t].tagName.includes("fish")){
+                document.getElementById(`${stringify(dishes[t].name)}`).style.display = "flex"
+            }
+        }
+        if (meat){
+            if (dishes[t].tagName.includes("meat")){
+                document.getElementById(`${stringify(dishes[t].name)}`).style.display = "flex"
+            }
+        }
+        if (vege){
+            if (dishes[t].tagName.includes("vege")){
+                document.getElementById(`${stringify(dishes[t].name)}`).style.display = "flex"
+            }
+        }
+        if (vegan){
+            if (dishes[t].tagName.includes("vegan")){
+                document.getElementById(`${stringify(dishes[t].name)}`).style.display = "flex"
+            }
+        }
+        if (!fish && !meat && !vege && !vegan){
+            document.getElementById(`${stringify(dishes[t].name)}`).style.display = "flex"
+        }
+    }
+}
+
+checkFish.addEventListener("change",tagTri)
+checkMeat.addEventListener("change",tagTri)
+checkVegan.addEventListener("change",tagTri)
+checkVege.addEventListener("change",tagTri)
