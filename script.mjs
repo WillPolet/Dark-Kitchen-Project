@@ -94,14 +94,17 @@ for (let i = 0 ; i < dishes.length ; i++){
                     if (document.getElementById(`shopInput${stringify(dishes[i].name)}`).value > 1){
                         document.getElementById(`shopInput${stringify(dishes[i].name)}`).value -= 1
                         document.getElementById(`price${stringify(dishes[i].name)}`).textContent = "$ " + parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) * dishes[i].price
+                        // Set price there
                     }
                     else{
+                        //Set price there
                         document.getElementById(`shop${stringify(dishes[i].name)}`).remove()
                     }
                 })
                 buttonTwo.addEventListener("click", () => {
                     document.getElementById(`shopInput${stringify(dishes[i].name)}`).value = parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) + 1
                     document.getElementById(`price${stringify(dishes[i].name)}`).textContent = "$ " + parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) * dishes[i].price
+                    // Set price there
                 })
                 let input = document.createElement("input")
                 input.type = "number"
@@ -114,6 +117,7 @@ for (let i = 0 ; i < dishes.length ; i++){
                 tdButton.appendChild(input)
                 tdButton.appendChild(buttonTwo)
                 tdPrice.textContent = "$ " + numberOf * dishes[i].price
+                // Set total Price there
                 newTr.appendChild(tdName)
                 newTr.appendChild(tdButton)
                 newTr.appendChild(tdPrice)
@@ -124,6 +128,7 @@ for (let i = 0 ; i < dishes.length ; i++){
             else {
                 document.getElementById(`shopInput${stringify(dishes[i].name)}`).value = parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) + numberOf
                 document.getElementById(`price${stringify(dishes[i].name)}`).textContent = "$ " + parseInt(document.getElementById(`shopInput${stringify(dishes[i].name)}`).value) * dishes[i].price
+                // Set TotalPrice there
                 document.getElementById(`number${stringify(dishes[i].name)}`).value = 0
             }
         }
@@ -141,9 +146,10 @@ const searchFor = () => {
         element.style.display = "none";
       }
     }
-  };
+};
   
-  document.getElementById("search").addEventListener("input", searchFor);
+document.getElementById("search").addEventListener("input", searchFor);
+
 
 /* I need to add a div somewhere with all the informations about the dishes added to the cart, give the opportunity to modify it with two buttons.
 And do the checkout */
