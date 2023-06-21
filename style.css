@@ -141,7 +141,12 @@ a:visited {
   font-size: 20px;
 }
 .longDesc {
-  visibility: hidden;
+  display: none;
+  font-family: "Merriweather", serif;
+  font-size: 10px;
+  font-weight: 100;
+  color: white;
+  padding: 10px;
 }
 
 .Header {
@@ -369,6 +374,14 @@ footer p {
   font-family: "Karla", sans-serif;
   /* display: flex; */
   /* justify-content: center; */
+}
+
+/*Class that hides/shows divs when callend via js*/
+.div-hidden{
+    display: none;
+}
+.div-visible{
+    display: flex;
 }
 
 @media screen and (max-width: 450px) {
